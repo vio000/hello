@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -30,6 +30,7 @@
     <body>
         <div class="app">
             <h1>Apache Cordova</h1>
+            <button onclick="login()">Login with FB</button>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
@@ -37,5 +38,17 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+
+        <script>
+
+            function login() {
+                facebookConnectPlugin.login(["public_profile"],
+                function (userData) {
+                    alert("UserInfo: " + JSON.stringify(userData));
+                },
+                function (error) { alert("" + error) }
+                );
+            }
+            </script>
     </body>
 </html>
